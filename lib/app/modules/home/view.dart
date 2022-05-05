@@ -19,7 +19,7 @@ class HomePage extends GetView<HomeController> {
             GridView.count(crossAxisCount: 2,
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
-            children: [AddCard()],
+            children: [AddCard(),AddCard()],
             )
           ],
         ),
