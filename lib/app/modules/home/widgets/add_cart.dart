@@ -1,12 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:task_app_getx/app/core/utils/extensions.dart';
 import 'package:task_app_getx/app/core/values/colors.dart';
 import 'package:task_app_getx/app/modules/home/controller.dart';
 import 'package:task_app_getx/app/widgets/icons.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class AddCard extends StatelessWidget {
@@ -22,7 +18,52 @@ class AddCard extends StatelessWidget {
       margin: EdgeInsets.all(4.0.wp),
       child: NeumorphicButton(
         child: const Icon(Icons.add),
-        onPressed: openDialog,
+        onPressed: () async {
+          await Future.delayed(const Duration(milliseconds: 300));
+          await Get.defaultDialog(
+              backgroundColor: boxes,
+              titlePadding: EdgeInsets.symmetric(vertical: 3.0.wp),
+              title: "Görev Tipi",
+              radius: 15,
+              content: Form(
+                key: homeCtrl.formKey,
+                child: Column(children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 3.0.wp),
+                    child: TextFormField(
+                      controller: homeCtrl.editCtrl,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(), labelText: "Başlık"),
+                      validator: (val) {
+                        if (val == null || val.trim().isEmpty) {
+                          return "Lütfen Başlık Giriniz";
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                  ),
+                  Wrap(
+                      spacing: 2.0.wp,
+                      children: icons
+                          .map((e) => Obx(() {
+                                final index = icons.indexOf(e);
+                                return ChoiceChip(
+                                  backgroundColor: boxes,
+                                  pressElevation: 0,
+                                  selectedColor: background,
+                                  label: e,
+                                  selected: homeCtrl.chipIndex.value == index,
+                                  onSelected: (bool selected) {
+                                    homeCtrl.chipIndex.value =
+                                        selected ? index : 0;
+                                  },
+                                );
+                              }))
+                          .toList()),
+                ]),
+              ));
+        },
         style: NeumorphicStyle(
             shape: NeumorphicShape.concave,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
@@ -33,33 +74,5 @@ class AddCard extends StatelessWidget {
             color: boxes),
       ),
     );
-  }
-
-  void openDialog() async {
-    await Future.delayed(Duration(milliseconds: 300));
-    await Get.defaultDialog(
-        titlePadding: EdgeInsets.symmetric(vertical: 3.0.wp),
-        title: "Görev Tipi",
-        radius: 15,
-        content: Form(
-          key: homeCtrl.formKey,
-          child: Column(children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 3.0.wp),
-              child: TextFormField(
-                controller: homeCtrl.editCtrl,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: "Başlık"),
-                validator: (val) {
-                  if (val == null || val.trim().isEmpty) {
-                    return "Lütfen Başlık Giriniz";
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-            ),
-          ]),
-        ));
   }
 }

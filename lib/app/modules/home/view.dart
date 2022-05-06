@@ -25,6 +25,7 @@ class HomePage extends GetView<HomeController> {
                       TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold),
                 ),
               ),
+              
               GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
