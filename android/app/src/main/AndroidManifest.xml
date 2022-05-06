@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.task_app_getx">
+  <uses-permission android:name="android.permission.VIBRATE"/>
    <application
+    
         android:label="task_app_getx"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:task_app_getx/app/core/utils/extensions.dart';
@@ -25,7 +26,7 @@ class AddCard extends StatelessWidget {
         style: NeumorphicStyle(
             shape: NeumorphicShape.concave,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-            depth: 3,
+            depth: 5,
             shadowLightColorEmboss: Colors.black,
             shadowDarkColor: grey,
             shadowLightColor: grey,
@@ -35,6 +36,7 @@ class AddCard extends StatelessWidget {
   }
 
   void openDialog() async {
+    await Future.delayed(Duration(milliseconds: 300));
     await Get.defaultDialog(
         titlePadding: EdgeInsets.symmetric(vertical: 3.0.wp),
         title: "Görev Tipi",
