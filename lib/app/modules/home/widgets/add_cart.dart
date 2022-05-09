@@ -1,9 +1,12 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:task_app_getx/app/core/utils/extensions.dart';
 import 'package:task_app_getx/app/core/values/colors.dart';
 import 'package:task_app_getx/app/modules/home/controller.dart';
 import 'package:task_app_getx/app/widgets/icons.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+
+import '../../../data/models/task.dart';
 
 class AddCard extends StatelessWidget {
   AddCard({Key? key}) : super(key: key);
@@ -61,6 +64,17 @@ class AddCard extends StatelessWidget {
                                 );
                               }))
                           .toList()),
+                    ElevatedButton(onPressed: (){
+                      
+                        
+                    }, child: const Text("Onayla",style: TextStyle(color: Colors.black),),
+                    style: ElevatedButton.styleFrom(
+                      primary: background,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      minimumSize: const Size(150, 40)
+                    ),
+                    
+                    )      
                 ]),
               ));
         },
@@ -74,5 +88,8 @@ class AddCard extends StatelessWidget {
             color: boxes),
       ),
     );
+  }
+  void onPressed(){
+    
   }
 }
