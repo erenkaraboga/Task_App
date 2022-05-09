@@ -65,8 +65,14 @@ class AddCard extends StatelessWidget {
                               }))
                           .toList()),
                     ElevatedButton(onPressed: (){
-                      
-                        
+                        if(homeCtrl.formKey.currentState!.validate()){
+                          int icon = icons[homeCtrl.chipIndex.value].icon!.codePoint;
+                          String color = icons[homeCtrl.chipIndex.value].color!.toHex();
+                          var task = Task(color: color,icon: icon,title: homeCtrl.editCtrl.text);
+                          Get.back();
+                          homeCtrl.addTask(task)?EasyLoading.showSuccess("Başarıyla Oluşturuldu"):
+                          EasyLoading.showError("Hata");
+                        }
                     }, child: const Text("Onayla",style: TextStyle(color: Colors.black),),
                     style: ElevatedButton.styleFrom(
                       primary: background,
