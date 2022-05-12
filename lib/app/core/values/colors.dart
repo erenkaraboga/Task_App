@@ -8,5 +8,6 @@ const yellow = Color(0xFFEEC38E);
 const lightBlue = Color(0xFF42A5F5);
 const blue = Color(0xFF2860E6);
 const background=Color(0xFFe1d5c9);
-const boxes=Color(0xFFf0e7dd);
+const addBoxColor=Color(0xFFf0e7dd);
+const taskCardColor=Color.fromARGB(173, 238, 217, 188);
 const grey= Colors.grey;

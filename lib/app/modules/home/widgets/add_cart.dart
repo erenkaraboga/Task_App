@@ -24,10 +24,10 @@ class AddCard extends StatelessWidget {
         onPressed: () async {
           await Future.delayed(const Duration(milliseconds: 300));
           await Get.defaultDialog(
-              backgroundColor: boxes,
+              backgroundColor: addBoxColor,
               titlePadding: EdgeInsets.symmetric(vertical: 3.0.wp),
               title: "Görev Tipi",
-              radius: 15,
+              radius: 5,
               content: Form(
                 key: homeCtrl.formKey,
                 child: Column(children: [
@@ -52,7 +52,7 @@ class AddCard extends StatelessWidget {
                           .map((e) => Obx(() {
                                 final index = icons.indexOf(e);
                                 return ChoiceChip(
-                                  backgroundColor: boxes,
+                                  backgroundColor: addBoxColor,
                                   pressElevation: 0,
                                   selectedColor: background,
                                   label: e,
@@ -83,15 +83,17 @@ class AddCard extends StatelessWidget {
                     )      
                 ]),
               ));
+              homeCtrl.editCtrl.clear();
+              homeCtrl.changeChipIndex(0);
         },
         style: NeumorphicStyle(
             shape: NeumorphicShape.concave,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
             depth: 5,
             shadowLightColorEmboss: Colors.black,
             shadowDarkColor: grey,
             shadowLightColor: grey,
-            color: boxes),
+            color: addBoxColor),
       ),
     );
   }

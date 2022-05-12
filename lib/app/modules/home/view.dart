@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_app_getx/app/core/values/colors.dart';
+import 'package:task_app_getx/app/data/models/task.dart';
 import 'package:task_app_getx/app/modules/home/controller.dart';
 import 'package:task_app_getx/app/core/utils/extensions.dart';
 import 'package:task_app_getx/app/modules/home/widgets/add_cart.dart';
 import 'package:flutter/services.dart';
+import 'package:task_app_getx/app/modules/home/widgets/task_card.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
@@ -25,12 +27,17 @@ class HomePage extends GetView<HomeController> {
                       TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold),
                 ),
               ),
-              
               GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
-                children: [AddCard()],
+                children: [
+                  AddCard(),
+                  TaskCard(
+                    task: const Task(
+                        color: '#FFEEC38E', icon: 0xe59c, title: "title"),
+                  ),
+                ],
               )
             ],
           ),
