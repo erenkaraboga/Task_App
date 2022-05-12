@@ -70,8 +70,8 @@ class AddCard extends StatelessWidget {
                           String color = icons[homeCtrl.chipIndex.value].color!.toHex();
                           var task = Task(color: color,icon: icon,title: homeCtrl.editCtrl.text);
                           Get.back();
-                          homeCtrl.addTask(task)?EasyLoading.showSuccess("Başarıyla Oluşturuldu"):
-                          EasyLoading.showError("Hata");
+                          homeCtrl.addTask(task)?EasyLoading.showSuccess("Başarıyla Oluşturuldu",duration: Duration(seconds: 1)):
+                          EasyLoading.showError("Aynı isimde Görev var!",duration: Duration(seconds: 1));
                         }
                     }, child: const Text("Onayla",style: TextStyle(color: Colors.black),),
                     style: ElevatedButton.styleFrom(
@@ -88,7 +88,7 @@ class AddCard extends StatelessWidget {
         },
         style: NeumorphicStyle(
             shape: NeumorphicShape.concave,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(11)),
             depth: 5,
             shadowLightColorEmboss: Colors.black,
             shadowDarkColor: grey,

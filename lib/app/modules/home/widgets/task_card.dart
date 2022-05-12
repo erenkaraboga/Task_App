@@ -48,10 +48,28 @@ class TaskCard extends StatelessWidget {
                 colors: [addBoxColor, addBoxColor],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight)),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Icon(IconData(task.icon,fontFamily: 'MaterialIcons'),color: color,),
-      )
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            IconData(task.icon, fontFamily: 'MaterialIcons'),
+            color: color,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(4.0.wp),
+          child: Column(
+            children: [
+              Text(
+                task.title,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0.sp),
+                overflow: TextOverflow.ellipsis,
+              ),
+              SizedBox(height:2.0.wp ,),
+              Text('${task.todos?.length ?? 0} Görev',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey ),)
+            ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+        )
       ]),
     );
   }
