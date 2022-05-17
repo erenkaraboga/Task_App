@@ -88,7 +88,7 @@ class AddCard extends StatelessWidget {
         },
         style: NeumorphicStyle(
             shape: NeumorphicShape.concave,
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(11)),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(30)),
             depth: 5,
             shadowLightColorEmboss: Colors.black,
             shadowDarkColor: grey,

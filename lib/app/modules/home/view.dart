@@ -10,7 +10,6 @@ import 'package:task_app_getx/app/modules/home/widgets/task_card.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +33,15 @@ class HomePage extends GetView<HomeController> {
                   physics: const ClampingScrollPhysics(),
                   children: [
                     ...controller.tasks
-                        .map((element) => TaskCard(task: element))
+                        .map((element) => LongPressDraggable(
+                            onDragStarted: () =>
+                                controller.changeDeeleting(true),
+                            onDraggableCanceled: (_, __) =>
+                                controller.changeDeeleting(false),
+                            onDragEnd: (_) => controller.changeDeeleting(false),
+                            feedback: Opacity(
+                                opacity: 0.8, child: TaskCard(task: element)),
+                            child: TaskCard(task: element)))
                         .toList(),
                     AddCard()
                   ],
@@ -43,6 +50,15 @@ class HomePage extends GetView<HomeController> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: Obx(()=>
+       FloatingActionButton(
+            onPressed: () {},
+            child: Icon(
+              controller.deleting.value ? Icons.delete : Icons.add,
+              color: Colors.black,
+            ),
+            backgroundColor: addBoxColor),
       ),
     );
   }

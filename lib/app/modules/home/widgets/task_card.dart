@@ -31,13 +31,13 @@ class TaskCard extends StatelessWidget {
             )
           ],
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(11),
-              bottomRight: Radius.circular(11))),
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30))),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         // TODO
         StepProgressIndicator(
             totalSteps: 100,
-            currentStep: 100,
+            currentStep: 30,
             size: 5,
             padding: 0,
             selectedGradientColor: LinearGradient(
